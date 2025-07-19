@@ -15,7 +15,7 @@ session_service = DatabaseSessionService(db_url=db_url)
 
 initial_state = {
     "user_name": "Balivada Dinesh",
-    "financial_data":[],
+    "financial_data_points":[],
 }
 
 
@@ -30,14 +30,14 @@ async def main_async():
         app_name=APP_NAME
     )
 
-    if existing_sessions and len(existing_sessions) > 0:
-        SESSION_ID = existing_sessions[0].id
+    if existing_sessions and len(existing_sessions.sessions) > 0:
+        SESSION_ID = existing_sessions.sessions[0].id
     else:
         # create a new session if no existing sessions found
         new_session = session_service.create_session(
             user_id=USER_ID,
             app_name=APP_NAME,
-            initial_state=initial_state
+            state=initial_state
         )
         SESSION_ID = new_session.id
         print(f"Created new session with ID: {SESSION_ID}")

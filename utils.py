@@ -42,11 +42,11 @@ def display_state(session_service, app_name, user_id, session_id, label = "Curre
         print(f"👤 User: {user_name}")
 
         # Handle reminders
-        financial_data = session.state.get("financial_data", [])
-        if financial_data:
-            print("📝 financial_data:")
-            for idx, reminder in enumerate(financial_data, 1):
-                print(f"  {idx}. {financial_data}")
+        financial_data_points = session.state.get("financial_data_points", [])
+        if financial_data_points:
+            print("📝 financial_data_points:")
+            for idx, financialData in enumerate(financial_data_points, 1):
+                print(f"  {idx}. {financialData}")
         else:
             print("📝 Financial Data: None")
 
